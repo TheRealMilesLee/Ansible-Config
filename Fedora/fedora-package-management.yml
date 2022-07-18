@@ -1,0 +1,13 @@
+---
+- name: Fedora Package Clean and Upgrade
+  hosts: Fedora-Machine
+  become: true
+  tasks:
+    - name: Fedora Package Clean
+      dnf:
+        autoremove: yes
+        update_cache: yes
+    - name: Fedora package update
+      yum:
+        name: "*"
+        state: latest

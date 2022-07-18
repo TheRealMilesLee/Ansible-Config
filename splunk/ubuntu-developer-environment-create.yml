@@ -1,0 +1,70 @@
+---
+- name: Ubuntu Package Modify
+  hosts: splunk
+  become: true
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: latest
+        update_cache: yes
+    - name: Install llvm
+      apt:
+        name: llvm
+        state: latest
+        update_cache: yes
+    - name: Install gcc
+      apt:
+        name: gcc
+        state: latest
+        update_cache: yes
+    - name: Install clang
+      apt:
+        name: clang
+        state: latest
+        update_cache: yes
+    - name: Install Python3
+      apt:
+        name: python3
+        state: latest
+        update_cache: yes
+    - name: Install php
+      apt:
+        name: php
+        state: latest
+        update_cache: yes
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: latest
+        update_cache: yes
+    - name: Install docker
+      apt:
+        name: docker
+        state: latest
+        update_cache: yes
+    - name: Install htop
+      apt:
+        name: htop
+        state: latest
+        update_cache: yes
+    - name: Install neofetch
+      apt:
+        name: neofetch
+        state: latest
+        update_cache: yes
+    - name: Install toilet
+      apt:
+        name: toilet
+        state: latest
+        update_cache: yes
+    - name: Install vim
+      apt:
+        name: vim
+        state: latest
+        update_cache: yes
+    - name: Install iotop
+      apt:
+        name: iotop
+        state: latest
+        update_cache: yes

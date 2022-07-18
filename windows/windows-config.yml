@@ -1,0 +1,8 @@
+---
+- name: Windows Environment modify
+  hosts: Windows
+  become: true
+  tasks:
+    - name: Install python
+      community.windows.win_scoop:
+        name: python

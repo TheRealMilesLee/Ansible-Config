@@ -1,0 +1,42 @@
+---
+- name: Create new Windows Server VM machine
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: Create Windows server virtual machine on U103
+      async: 45
+      poll: 0
+      vmware_guest:
+        hostname: "10.50.1.103"
+        username: "root"
+        password: "UonaUona##"
+        validate_certs: no
+        datastore: "VM_and_ISO"
+        esxi_hostname: "localhost.uona.edu"
+        folder: "/"
+        name: "{{ VM_Name }}"
+        state: present
+        guest_id: windows9Server64Guest
+        disk:
+          - size_gb: 128
+            type: thin
+            datastore: datastore1
+        hardware:
+          memory_mb: 8192
+          num_cpus: 4
+          scsi: lsilogic
+        cdrom:
+          - controller_number: 0
+            unit_number: 0
+            state: present
+            type: iso
+            iso_path: "[VM_and_ISO] ISO/17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso"
+        networks:
+        - name: VM Network
+          connected: yes
+          device_type: "vmxnet3"
+          start_connected: yes
+        wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy_vm

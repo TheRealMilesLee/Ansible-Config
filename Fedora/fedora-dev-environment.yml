@@ -1,0 +1,71 @@
+---
+- name: Ubuntu Package Modify
+  hosts: Fedora-Machine
+  become: true
+  tasks:
+    - name: Install git
+      dnf:
+        name: git
+        state: latest
+        update_cache: yes
+    - name: Install llvm
+      dnf:
+        name: llvm
+        state: latest
+        update_cache: yes
+    - name: Install gcc
+      dnf:
+        name: gcc
+        state: latest
+        update_cache: yes
+    - name: Install clang
+      dnf:
+        name: clang
+        state: latest
+        update_cache: yes
+    - name: Install Python3
+      dnf:
+        name: python3
+        state: latest
+        update_cache: yes
+    - name: Install php
+      dnf:
+        name: php
+        state: latest
+        update_cache: yes
+    - name: Install nginx
+      dnf:
+        name: nginx
+        state: latest
+        update_cache: yes
+    - name: Install docker
+      dnf:
+        name: docker
+        state: latest
+        update_cache: yes
+    - name: Install htop
+      dnf:
+        name: htop
+        state: latest
+        update_cache: yes
+    - name: Install neofetch
+      dnf:
+        name: neofetch
+        state: latest
+        update_cache: yes
+    - name: Install toilet
+      dnf:
+        name: toilet
+        state: latest
+        update_cache: yes
+    - name: Install Vim
+      dnf:
+        name: vim
+        state: latest
+        update_cache: yes
+    - name: Install iotop
+      dnf:
+        name: iotop
+        state: latest
+        update_cache: yes
+

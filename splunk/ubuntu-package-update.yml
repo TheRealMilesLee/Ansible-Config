@@ -1,0 +1,11 @@
+---
+- name: Ubuntu Package Update
+  hosts: splunk
+  become: true
+  tasks:
+    - name: package update
+      apt:
+        name: "*"
+        state: latest
+        update_cache: yes
+

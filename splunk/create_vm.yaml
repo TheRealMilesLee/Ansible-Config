@@ -1,0 +1,41 @@
+---
+- name: Create new VM machine
+  hosts: localhost
+  become: true
+  connection: local
+  tasks:
+    - name: Create a virtual machine on given ESXi hostname
+      vmware_guest:
+        hostname: "10.50.1.102"
+        username: "HengyiLi"
+        password: "UoNA4375!"
+        validate_certs: no
+        datastore: "datastore1(4)"
+        esxi_hostname: "u102"
+        state: present
+        folder: "/"
+        name: Search_engine
+        state: powered-off
+        guest_id: ubuntu64Guest
+        disk:
+          - size_gb: 100
+            type: thin
+            datastore: datastore1(4)
+        hardware:
+          memory_mb: 16384
+          num_cpus: 8
+          scsi: paravirtual
+        cdrom:
+          controller_type: sata
+          controller_number: 2
+          iso_path: "[datastore1(4)] ISO/ubuntu-20.04.1-live-server-amd64.iso"
+          type: iso
+        networks:
+        - name: VM Network
+          connected: yes
+          device_type: "vmxnet3"
+          start_connected: yes
+        wait_for_ip_address: true
+      delegate_to: localhost
+      register: deploy_vm
+
